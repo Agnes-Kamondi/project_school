@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'course',
     'student',
     'student_class',
-    'teacher'
+    'teacher',
+    'rest_framework',
+    'classperiod',
 ]
 
 MIDDLEWARE = [
