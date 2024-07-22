@@ -1,5 +1,5 @@
 from classperiod.models import Class_Period
-from course.models import Course
+from courses.models import Course
 from student.models import Student
 from rest_framework import serializers
 from student_class.models import Student_Class
