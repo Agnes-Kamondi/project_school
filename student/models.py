@@ -1,4 +1,5 @@
 from django.db import models
+from courses.models import Course
 
 from student_class.models import Student_Class
 
@@ -15,6 +16,7 @@ class Student(models.Model):
     gender = models.CharField(max_length=10)
     country = models.CharField(max_length=100)
     bio = models.TextField(blank=True, null=True)
+    course = models.ManyToManyField(Course)
     enrollment_date = models.DateField()
     guardian_phone_number = models.CharField(max_length=15)
     guardian_name = models.CharField(max_length=100)
