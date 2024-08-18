@@ -6,6 +6,7 @@ from .views import (
     StudentDetailView, StudentListViews, 
     TeacherDetailView, TeacherListViews
 )
+from api import views
 
 urlpatterns = [
     path("Students/", StudentListViews.as_view(), name="student_list_view"),
@@ -18,4 +19,5 @@ urlpatterns = [
     path("Courses/<int:id>/", CourseDetailView.as_view(), name="course_detail_view"),
     path("Student_Class/<int:id>/", Student_ClassDetailView.as_view(), name="student_class_detail_view"),
     path("Class_Period/<int:id>/", Class_PeriodDetailView.as_view(), name="class_period_detail_view"),
+    
 ]

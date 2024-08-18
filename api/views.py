@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from api.serializer import Class_PeriodSerializer, CourseSerializer, Student_ClassSerializer, StudentSerializer, TeacherSerializer
+from api.serializer import Class_PeriodSerializer, CourseSerializer, MinimalClass_PeriodSerializer, MinimalCourseSerializer, MinimalStudent_ClassSerializer, MinimalStudentSerializer, MinimalTeacherSerializer, Student_ClassSerializer, StudentSerializer, TeacherSerializer
 from classperiod.models import Class_Period
 from courses.models import Course
 
@@ -10,7 +10,6 @@ from student_class.models import Student_Class
 
 from teacher.models import Teacher
 from rest_framework import status
-
 
 # Create your views here.
 class StudentListViews(APIView):
@@ -23,6 +22,7 @@ class StudentListViews(APIView):
         if country:
             Students = Students.filter(country = country)
         serializer = StudentSerializer(student, many=True)
+        serializer = MinimalStudentSerializer(student, many = True)
         return Response(serializer.data)
        
     def post(self, request):
@@ -87,6 +87,7 @@ class TeacherListViews(APIView):
     def get(self, request):
         teacher = Teacher.objects.all()
         serializer = TeacherSerializer(teacher, many=True)
+        serializer = MinimalTeacherSerializer(teacher, many = True)
         return Response(serializer.data)
     
     def post(self, request):
@@ -144,6 +145,7 @@ class CourseListViews(APIView):
     def get(self, request):
         course = Course.objects.all()
         serializer = CourseSerializer(course, many=True)
+        serializer = MinimalCourseSerializer(course, many = True)
         return Response(serializer.data)
     
     def post(self, request):
@@ -178,6 +180,7 @@ class Student_ClassListViews(APIView):
     def get(self, request):
         student_class = Student_Class.objects.all()
         serializer = Student_ClassSerializer(student_class, many=True)
+        serializer = MinimalStudent_ClassSerializer(student_class, many = True)
         return Response(serializer.data)
     
     def post(self, request):
@@ -212,6 +215,7 @@ class Class_PeriodListViews(APIView):
     def get(self, request):
         classperiod = Class_Period.objects.all()
         serializer = Class_PeriodSerializer(classperiod, many=True)
+        serializer = MinimalClass_PeriodSerializer(classperiod, many = True)
         return Response(serializer.data)
     
     def post(self, request):
@@ -273,7 +277,7 @@ class Class_PeriodDetailView(APIView):
                     'end_time': period.end_time,
                     'course': period.course.name,
                     'teacher': period.teacher.name,
-                    'student_class': period.student_class
+                    'student_class': period.student_class.name
                 })
             timetable.append(day_timetable)
         return Response({'timetable': timetable})
