@@ -253,9 +253,6 @@ class Class_PeriodDetailView(APIView):
             course_id = request.data.get("course_id")
             self.create_class_period(teacher_id, course_id)
             return Response(status=status.HTTP_201_CREATED)
-        elif action == "get_timetable":
-            self.get_timetable(id)
-            return Response(status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -266,18 +263,8 @@ class Class_PeriodDetailView(APIView):
         class_period.save()
         return Response(status=status.HTTP_201_CREATED)
     
-    def get_timetable(self, request, id):
-        class_period = Class_Period.objects.get(id=id)
-        timetable = []
-        for day in range(7):  
-            day_timetable = []
-            for period in class_period.periods.filter(day=day):
-                day_timetable.append({
-                    'start_time': period.start_time,
-                    'end_time': period.end_time,
-                    'course': period.course.name,
-                    'teacher': period.teacher.name,
-                    'student_class': period.student_class.name
-                })
-            timetable.append(day_timetable)
-        return Response({'timetable': timetable})
+class WeeklyTimetable(APIView):
+    def get(self, request):
+        class_periods = Class_Period.objects.all()
+        serializer = Class_PeriodSerializer(class_periods, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

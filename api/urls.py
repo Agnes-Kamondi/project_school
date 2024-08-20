@@ -4,7 +4,7 @@ from .views import (
     CourseDetailView, CourseListViews, 
     Student_ClassDetailView, Student_ClassListViews, 
     StudentDetailView, StudentListViews, 
-    TeacherDetailView, TeacherListViews
+    TeacherDetailView, TeacherListViews, WeeklyTimetable
 )
 from api import views
 
@@ -19,5 +19,5 @@ urlpatterns = [
     path("Courses/<int:id>/", CourseDetailView.as_view(), name="course_detail_view"),
     path("Student_Class/<int:id>/", Student_ClassDetailView.as_view(), name="student_class_detail_view"),
     path("Class_Period/<int:id>/", Class_PeriodDetailView.as_view(), name="class_period_detail_view"),
-    
+    path('Weekly-timetable/', WeeklyTimetable.as_view(), name='weekly_timetable'),
 ]
