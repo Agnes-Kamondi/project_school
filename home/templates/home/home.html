@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">School Management System</div>
+        <nav>
+            <ul class="nav-list"> <!-- Updated class for styling -->
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Students</a></li>
+                <li><a href="#">Classes</a></li>
+                <li><a href="#">Teachers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to the School Management System</h1>
+        <p>Streamlining school administration and student management.</p>
+        <a href="#" class="cta-button">Get Started</a>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <div class="feature-cards"> <!-- Added wrapper for cards -->
+            <div class="feature-item">
+                <h3>Course Management</h3>
+                <p>Manage and organize courses easily.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Student Registration</h3>
+                <p>Seamlessly enroll and manage students.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Class Schedules</h3>
+                <p>Create and maintain class schedules.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Teacher Management</h3>
+                <p>Assign and manage teachers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="updates">
+        <h2>Latest Updates</h2>
+        <article>
+            <h3>New Course Added: Advanced Python</h3>
+            <p>Explore our new course on advanced Python programming.</p>
+        </article>
+        <article>
+            <h3>Upcoming Event: Annual Science Fair</h3>
+            <p>Join us for the annual science fair showcasing students' innovative projects.</p>
+        </article>
+    </section>
+
+    <section class="quick-links">
+        <h2>Quick Links</h2>
+        <ul>
+            <li><a href="#">View Courses</a></li>
+            <li><a href="#">Student Directory</a></li>
+            <li><a href="#">Teacher Directory</a></li>
+            <li><a href="#">Class Schedules</a></li>
+        </ul>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: support@schoolproject.com</p>
+        <p>Phone: 123-456-7890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 School Management System. All rights reserved.</p>
+        <nav>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>
