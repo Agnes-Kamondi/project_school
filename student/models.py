@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from courses.models import Course
 
@@ -25,3 +26,20 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    def check_code(self):
+        return f"{self.code}"
+    
+    def get_age(self):
+        if self.date_of_birth:
+            today = datetime.now()
+            age = today.year - self.date_of_birth.year
+            
+            if (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day):
+                age -= 1
+            
+            return age
+        return None 
