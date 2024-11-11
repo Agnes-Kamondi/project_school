@@ -32,14 +32,4 @@ class Student(models.Model):
     
     def check_code(self):
         return f"{self.code}"
-    
-    def get_age(self):
-        if self.date_of_birth:
-            today = datetime.now()
-            age = today.year - self.date_of_birth.year
-            
-            if (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day):
-                age -= 1
-            
-            return age
-        return None 
+ 
